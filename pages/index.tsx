@@ -68,13 +68,17 @@ const Index = () => {
       <Container as="section" size="sm" className="my-28 mx-auto p-6 md:p-0">
         <div className="flex mb-12">
           <h3>Recent Posts</h3>
-          <Button to="/blog" className="bg-gradient ml-3 rounded-md">
+          <Button
+            href="/blog"
+            as={Link}
+            className="bg-gradient ml-3 rounded-md"
+          >
             See all
           </Button>
         </div>
         <div className="grid md:grid-cols-2 gap-12">
           {allBlogs.slice(4).map((item) => (
-            <HomePostCards key={item._id} post={item} />
+            <HomePostCards key={item._id} frontmatter={item.frontmatter} />
           ))}
         </div>
       </Container>
@@ -85,11 +89,15 @@ const Index = () => {
       >
         <div className="flex mb-12">
           <h3>Recent Projects</h3>
-          <Button to="/works" color="gradient" className="ml-3 rounded-md">
+          <Button
+            href="/works"
+            as={Link}
+            className="ml-3 bg-gradient rounded-md"
+          >
             See all
           </Button>
         </div>
-        <Stack spacing="12" col>
+        <Stack spacing="1rem" col>
           {works.slice(0, 2).map((item) => (
             <HomeWorksCard work={item} key={item.title} />
           ))}

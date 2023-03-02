@@ -1,16 +1,11 @@
 ---
-title: 'Setup Yarn workspaces with typescript.'
-description:
-  'A complete guide on how to setup Yarn workspace for React web, and
-  React-Native(expo) with Typescript.'
+title: "Setup Yarn workspaces with typescript."
+description: "A complete guide on how to setup Yarn workspace for React web, and
+  React-Native(expo) with Typescript."
 imageUrl: https://res.cloudinary.com/dnature/image/upload/c_scale,w_0.7/v1614290826/blog/yarn-workspace/thumbnail_bh92xp.png
-tags: ['yarn', 'workspace', 'typescript']
+tags: ["yarn", "workspace", "typescript"]
 author: DNature
 ---
-
-## How to setup Yarn workspace for React web, and React-Native(expo) with Typescript
-
-<br />
 
 ### Prerequisites
 
@@ -252,7 +247,7 @@ following piece of code:
 module.exports = function (api) {
   api.cache(true);
   return {
-    presets: ['babel-preset-expo'],
+    presets: ["babel-preset-expo"],
   };
 };
 ```
@@ -266,7 +261,7 @@ Create a **metro.config.js** file in your **packages/app** directory and paste
 the following configuration:
 
 ```js
-const { createMetroConfiguration } = require('expo-yarn-workspaces');
+const { createMetroConfiguration } = require("expo-yarn-workspaces");
 module.exports = createMetroConfiguration(__dirname);
 ```
 
@@ -351,10 +346,10 @@ using it in our **App.tsx** to log the sum of two numbers. Your **App.tsx**
 should look like:
 
 ```js
-import React from 'react';
-import logo from './logo.svg';
-import { add } from '@expoYarn/common';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import { add } from "@expoYarn/common";
+import "./App.css";
 
 const App = () => {
   // Testing out our add function
@@ -362,17 +357,17 @@ const App = () => {
   console.log(result); // => Returns [30]
 
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
         <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Learn React
         </a>

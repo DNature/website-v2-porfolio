@@ -1,14 +1,12 @@
 ---
-title: 'Setup Tailwind, and PurgeCSS in Nextjs'
+title: "Setup Tailwind, and PurgeCSS in Nextjs"
 description:
-  'How to setup your Nextjs project with tailwindcss, purgecss, autoprefixer and
-  postcss.'
-imageUrl: 'https://res.cloudinary.com/dnature/image/upload/c_scale,w_0.8/v1614286507/blog/tailwind-purgecss/thumbnail_iroqtb.png'
-tags: ['next', 'tailwind', 'optimization']
+  "How to setup your Nextjs project with tailwindcss, purgecss, autoprefixer and
+  postcss."
+imageUrl: "https://res.cloudinary.com/dnature/image/upload/c_scale,w_0.8/v1614286507/blog/tailwind-purgecss/thumbnail_iroqtb.png"
+tags: ["next", "tailwind", "optimization"]
 author: DNature
 ---
-
-## How to setup your Nextjs project with tailwindcss, purgecss, autoprefixer and postcss
 
 ### Prerequisites
 
@@ -78,8 +76,8 @@ Next thing is to create a file and call it _/\_app.js_ in the pages directory
 and paste the following code to import _tailwind.css_ .
 
 ```js
-import React from 'react';
-import '../tailwind.css';
+import React from "react";
+import "../tailwind.css";
 
 export default function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;
@@ -89,15 +87,15 @@ export default function MyApp({ Component, pageProps }) {
 Lets apply some tailwind css selectors in our app to test if it's going to work:
 
 ```js
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function Index() {
   return (
-    <div className='container mx-auto bg-gray-200 flex flex-col justify-center items-center h-screen'>
-      <p className='text-4xl'>Hello Next.js</p>
+    <div className="container mx-auto bg-gray-200 flex flex-col justify-center items-center h-screen">
+      <p className="text-4xl">Hello Next.js</p>
 
-      <Link href='/about'>
-        <a className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full'>
+      <Link href="/about">
+        <a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
           About
         </a>
       </Link>
@@ -107,15 +105,15 @@ export default function Index() {
 ```
 
 ```js
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function About() {
   return (
-    <div className='container mx-auto bg-gray-200 flex flex-col justify-center items-center h-screen'>
-      <p className='text-2xl'>This is the about page</p>
+    <div className="container mx-auto bg-gray-200 flex flex-col justify-center items-center h-screen">
+      <p className="text-2xl">This is the about page</p>
 
-      <Link href='/'>
-        <a className='bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full'>
+      <Link href="/">
+        <a className="bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
           Home
         </a>
       </Link>
@@ -124,7 +122,7 @@ export default function About() {
 }
 ```
 
-<span className='text-4xl'>😲</span> With just few lines of css selectors we got
+<span className="text-4xl">😲</span> With just few lines of css selectors we got
 our app to look great
 <br />
 
@@ -148,20 +146,20 @@ code:
 ```js
 module.exports = {
   plugins: [
-    'tailwindcss',
-    'autoprefixer',
+    "tailwindcss",
+    "autoprefixer",
     [
-      '@fullhuman/postcss-purgecss',
+      "@fullhuman/postcss-purgecss",
       {
         content: [
-          './pages/**/*.{js,jsx,ts,tsx}',
-          './components/**/*.{js,jsx,ts,tsx}',
-          './tailwind.css',
+          "./pages/**/*.{js,jsx,ts,tsx}",
+          "./components/**/*.{js,jsx,ts,tsx}",
+          "./tailwind.css",
         ],
         defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
       },
     ],
-    'postcss-preset-env',
+    "postcss-preset-env",
   ],
 };
 ```
@@ -174,23 +172,23 @@ production by tweaking our code a little bit.
 ```js
 module.exports = {
   plugins: [
-    'tailwindcss',
-    process.env.NODE_ENV === 'production' ? 'autoprefixer' : undefined,
-    process.env.NODE_ENV === 'production'
+    "tailwindcss",
+    process.env.NODE_ENV === "production" ? "autoprefixer" : undefined,
+    process.env.NODE_ENV === "production"
       ? [
-          '@fullhuman/postcss-purgecss',
+          "@fullhuman/postcss-purgecss",
           {
             content: [
-              './pages/**/*.{js,jsx,ts,tsx}',
-              './components/**/*.{js,jsx,ts,tsx}',
-              './tailwind.css',
+              "./pages/**/*.{js,jsx,ts,tsx}",
+              "./components/**/*.{js,jsx,ts,tsx}",
+              "./tailwind.css",
             ],
             defaultExtractor: (content) =>
               content.match(/[\w-/:]+(?<!:)/g) || [],
           },
         ]
       : undefined,
-    'postcss-preset-env',
+    "postcss-preset-env",
   ],
 };
 ```

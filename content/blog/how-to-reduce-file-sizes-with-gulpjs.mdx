@@ -1,12 +1,10 @@
 ---
-title: 'How to Reduce file sizes with Gulpjs'
-description: 'Learn how to publish you Next.js app to netlify in minutes.'
+title: "How to Reduce file sizes with Gulpjs"
+description: "Learn how to publish you Next.js app to netlify in minutes."
 imageUrl: https://res.cloudinary.com/dnature/image/upload/c_scale,w_0.7/v1614289778/blog/gulp/thumbnail_jivsia.png
-tags: ['gulp', 'javascript']
+tags: ["gulp", "javascript"]
 author: DNature
 ---
-
-## Learn how to automatically minify your files with gulpjs?.
 
 ## Prerequisites
 
@@ -109,11 +107,11 @@ npm i -D gulp-imagemin
 Add the following code to the **gulpfile.js** file we created earlier.
 
 ```js
-const { src, dest } = require('gulp');
-const imagemin = require('gulp-imagemin');
+const { src, dest } = require("gulp");
+const imagemin = require("gulp-imagemin");
 
 function minifyImages() {
-  return src(['./images/**/*']).pipe(imagemin()).pipe(dest('dist/images'));
+  return src(["./images/**/*"]).pipe(imagemin()).pipe(dest("dist/images"));
 }
 
 exports.minifyImages = minifyImages;
@@ -173,16 +171,16 @@ Next we will require our plugin and add a function that will minify our **CSS**
 files.
 
 ```js
-const { src, dest } = require('gulp');
-const imagemin = require('gulp-imagemin');
-const cleancss = require('gulp-clean-css');
+const { src, dest } = require("gulp");
+const imagemin = require("gulp-imagemin");
+const cleancss = require("gulp-clean-css");
 
 function minifyImages() {
-  return src(['./images/**/*']).pipe(imagemin()).pipe(dest('dist/images'));
+  return src(["./images/**/*"]).pipe(imagemin()).pipe(dest("dist/images"));
 }
 
 function minifyCss() {
-  return src(['css/**/*.css']).pipe(cleancss()).pipe(dest('dist/css'));
+  return src(["css/**/*.css"]).pipe(cleancss()).pipe(dest("dist/css"));
 }
 
 exports.minifyCss = minifyCss;
@@ -198,21 +196,21 @@ gulp minifyCss
 To minify your javascript files your code should look like:
 
 ```js
-const { src, dest } = require('gulp');
-const imagemin = require('gulp-imagemin');
-const cleancss = require('gulp-clean-css');
-const javascript = require('gulp-uglify');
+const { src, dest } = require("gulp");
+const imagemin = require("gulp-imagemin");
+const cleancss = require("gulp-clean-css");
+const javascript = require("gulp-uglify");
 
 function minifyImages() {
-  return src(['./images/**/*']).pipe(imagemin()).pipe(dest('dist/images'));
+  return src(["./images/**/*"]).pipe(imagemin()).pipe(dest("dist/images"));
 }
 
 function minifyCss() {
-  return src(['css/**/*.css']).pipe(cleancss()).pipe(dest('dist/css'));
+  return src(["css/**/*.css"]).pipe(cleancss()).pipe(dest("dist/css"));
 }
 
 function minifyJS() {
-  return src(['js/**/*.js']).pipe(javascript()).pipe(dest('dist/js'));
+  return src(["js/**/*.js"]).pipe(javascript()).pipe(dest("dist/js"));
 }
 
 exports.minifyCss = minifyCss;
@@ -236,28 +234,28 @@ Lets enhance our DX by applying the series method.
 Your code should look like:
 
 ```js
-const { src, dest, task, series } = require('gulp');
-const imagemin = require('gulp-imagemin');
-const cleancss = require('gulp-clean-css');
-const javascript = require('gulp-uglify');
+const { src, dest, task, series } = require("gulp");
+const imagemin = require("gulp-imagemin");
+const cleancss = require("gulp-clean-css");
+const javascript = require("gulp-uglify");
 
 function minifyImages() {
-  return src(['./images/**/*']).pipe(imagemin()).pipe(dest('dist/images'));
+  return src(["./images/**/*"]).pipe(imagemin()).pipe(dest("dist/images"));
 }
 
 function minifyCss() {
-  return src(['css/**/*.css']).pipe(cleancss()).pipe(dest('dist/css'));
+  return src(["css/**/*.css"]).pipe(cleancss()).pipe(dest("dist/css"));
 }
 
 function minifyJS() {
-  return src(['js/**/*.js']).pipe(javascript()).pipe(dest('dist/js'));
+  return src(["js/**/*.js"]).pipe(javascript()).pipe(dest("dist/js"));
 }
 
 exports.minifyCss = minifyCss;
 exports.minifyImages = minifyImages;
 exports.minifyJS = minifyJS;
 
-task('start', series(minifyCss, minifyImages, minifyJS));
+task("start", series(minifyCss, minifyImages, minifyJS));
 ```
 
 Now you can execute all your gulp tasks with one command

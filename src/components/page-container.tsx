@@ -1,4 +1,4 @@
-import { Badge, Box, LazyImage } from "@nature-ui/core";
+import { Badge, Box, LazyImage, nature } from "@nature-ui/core";
 import { useRouter } from "next/router";
 import * as React from "react";
 
@@ -40,9 +40,10 @@ function PageContainer(props: PageContainerProps) {
     editUrl,
     auth,
     lastEdited,
-    published,
+    dateCreated,
     readTime,
     imageUrl,
+    datePublished,
   } = frontmatter;
 
   let fallbackSrc: any = imageUrl.split(".");
@@ -57,7 +58,7 @@ function PageContainer(props: PageContainerProps) {
     <>
       <SEO title={title} description={description} />
       <Header />
-      <Box as="main" className="h-full">
+      <Box as="article" className="h-full">
         <Box centered className="flex max-w-screen-lg mx-auto">
           <Box className="flex-1 w-screen">
             <Box
@@ -97,17 +98,16 @@ function PageContainer(props: PageContainerProps) {
                           </a>
                           <Badge
                             as="span"
-                            className="text-sm font-normal ml-4"
-                            color="primary-700"
+                            className="text-white bg-primary-700 text-sm font-normal ml-4"
                             variant="solid"
                           >
                             {readTime} min read
                           </Badge>
                         </p>
-                        {published && (
+                        {dateCreated && (
                           <>
                             <p className="opacity-60">
-                              Published on {published.date}.
+                              Published on {datePublished ?? dateCreated.date}.
                             </p>
                             {lastEdited && (
                               <p className="opacity-60">
@@ -131,7 +131,10 @@ function PageContainer(props: PageContainerProps) {
                     alt={title}
                   />
                 </div>
-                {children}
+                <nature.h3 className="my-12">
+                  {frontmatter.description}
+                </nature.h3>
+                <span className="mdx-content">{children}</span>
               </PageTransition>
               <Box className="my-14">
                 {editUrl && <EditPageLink href={editUrl} />}

@@ -1,17 +1,15 @@
-import { Box, Container, IconButton, Stack } from "@nature-ui/core";
+import { Box, Container, Icon, Stack } from "@nature-ui/core";
 import siteConfig from "configs/site-config";
 import Link from "next/link";
-import { ElementType, FC } from "react";
+import React from "react";
 import {
-  IoGlobeOutline,
   IoLogoDiscord,
+  IoLogoDribbble,
   IoLogoGithub,
+  IoLogoLinkedin,
   IoLogoTwitter,
 } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
-import { NigeriaFlag } from "./nigerian-flag";
-
-// 🇳🇬
 
 export const links = [
   {
@@ -25,9 +23,14 @@ export const links = [
     href: "https://twitter.com/DivineHycenth",
   },
   {
-    icon: IoGlobeOutline,
-    label: "Website",
-    href: "https://divinehycenth.com",
+    icon: IoLogoDribbble,
+    label: "Dribbble",
+    href: "https://dribbble.com/DNature",
+  },
+  {
+    icon: IoLogoLinkedin,
+    label: "Linkedin",
+    href: "https://linkedin.com/in/dnature",
   },
   {
     icon: MdEmail,
@@ -42,41 +45,47 @@ export const links = [
 ];
 
 type FooterLinkProps = {
-  icon?: ElementType;
-  href: string;
+  icon?: React.ElementType;
+  href?: string;
   label?: string;
 };
-
-const FooterLink: FC<FooterLinkProps> = ({
-  icon: Icon,
+const FooterLink: React.FC<FooterLinkProps> = ({
+  icon,
   href,
   label,
   ...rest
 }) => (
-  <Box as="span" {...rest}>
-    <Link href={href} aria-label={label} target="_blank">
-      <IconButton icon={<Icon />} size="lg" className="text-gray-100" />
+  <Box as="span" {...rest} aria-label={label}>
+    <Link target="_blank" aria-label={label} title={label} href={href}>
+      <Icon as={icon} size="lg" className="text-gray-400" />
     </Link>
   </Box>
 );
 
 const Footer = () => {
   return (
-    <Box as="footer" className="border-t bg-white text-center py-16">
-      <Container size="xs" centered>
-        <p className="text-sm">
-          <span>
-            Proudly made in
-            <NigeriaFlag />
-          </span>
-          <span>by Divine Hycenth</span>
-        </p>
-        <Stack row spacing="1rem" className="justify-center mt-3">
-          {links.map((link) => (
-            <FooterLink key={link.href} {...link} />
-          ))}
-        </Stack>
-      </Container>
+    <Box as="footer" className="relative" css={{ justifySelf: "flex-start" }}>
+      <Box className="text-center py-16 relative bg-glass">
+        <Container size="xs" centered>
+          <p className="text-sm">
+            <span>
+              Made with 💖 by{" "}
+              <Link
+                target="_blank"
+                className="hover:underline"
+                href={"//twitter.com/DivineHycenth"}
+              >
+                Divine Hycenth
+              </Link>
+            </span>
+          </p>
+          <Stack row className="justify-center mt-3">
+            {links.map((link) => (
+              <FooterLink key={link.href} {...link} />
+            ))}
+          </Stack>
+        </Container>
+      </Box>
     </Box>
   );
 };

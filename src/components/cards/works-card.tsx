@@ -74,7 +74,6 @@ export const HomeWorksCard = ({ work, className = "", ...rest }) => {
         <Box className="md:grid grid-cols-2 gap-4 items-center">
           <Box className="grid">
             <LazyImage
-              loading="lazy"
               src={imageUrl}
               fallbackSrc={fallbackSrc}
               alt={title}
@@ -84,9 +83,9 @@ export const HomeWorksCard = ({ work, className = "", ...rest }) => {
           <Box>
             <h3 className="font-semibold mb-2">{title}</h3>
             {tags && (
-              <Stack row spacing="2">
+              <Stack row spacing="4px">
                 {tags.map((tag, i) => (
-                  <Badge color="primary-600" variant="solid" key={tag + i}>
+                  <Badge className="bg-primary-600 text-slate-50" key={tag + i}>
                     {tag}
                   </Badge>
                 ))}
@@ -94,10 +93,14 @@ export const HomeWorksCard = ({ work, className = "", ...rest }) => {
             )}
             <p className="my-4">{getNChars(description, 300)}</p>
             <Stack row>
-              <Button size="sm" color="gradient" to={websiteUrl}>
+              <Button size="sm" className="bg-gradient" to={websiteUrl}>
                 Visit site
               </Button>
-              <Button size="sm" color="gray-300" to={githubUrl}>
+              <Button
+                size="sm"
+                className="bg-gray-300 text-dark-700"
+                to={githubUrl}
+              >
                 View source
               </Button>
             </Stack>
@@ -143,7 +146,6 @@ export const WorksCard = ({
     >
       <Box className="grid">
         <LazyImage
-          loading="lazy"
           fallbackSrc={fallbackSrc}
           src={imageUrl}
           alt={title}
@@ -238,7 +240,6 @@ export const MobileCard = ({
       >
         <Box className="grid">
           <LazyImage
-            loading="lazy"
             src={imageUrl}
             fallbackSrc={fallbackSrc}
             alt={title}
@@ -258,7 +259,6 @@ export const MobileCard = ({
             <ModalCloseButton />
             <Box className="grid">
               <LazyImage
-                loading="lazy"
                 src={imageUrl}
                 fallbackSrc={fallbackSrc}
                 alt={title}

@@ -1,58 +1,83 @@
-import { IconButton, useDisclosure, useUpdateEffect } from "@nature-ui/core";
+import {
+  Button,
+  IconButton,
+  Stack,
+  clsx,
+  nature,
+  useDisclosure,
+  useUpdateEffect,
+} from "@nature-ui/core";
 import Link from "next/link";
-import { useRef } from "react";
+import React from "react";
 
-import siteConfig from "configs/site-config";
-
-import { DiscordIcon, GithubIcon, Logo } from "./icons";
+import { useRouter } from "next/router";
+import { FaMoon, FaSun } from "react-icons/fa";
+import { Logo } from "./Logo";
+import { Search } from "./algolia-search";
+import { useColorMode, useColorModeValue } from "./color-mode/color-mode";
 import { MobileNavButton, MobileNaveContent } from "./mobile-nav";
-import VersionSwitcher from "./version-switcher";
 
-const HeaderContent = () => {
-  const mobileNavBtnRef = useRef<HTMLButtonElement>();
+const NavLink = ({ children, href, className = "", ...props }) => {
+  const { pathname } = useRouter();
+  return (
+    <Button
+      as={Link}
+      className={clsx("font-medium hidden sm:inline-flex", className, {
+        [`text-gradient`]: pathname.includes(href),
+      })}
+      {...props}
+      href={href}
+    >
+      {children}
+    </Button>
+  );
+};
+
+const Header = () => {
+  const mobileNavBtnRef = React.useRef<HTMLButtonElement>();
 
   const mobileNav = useDisclosure();
+
+  const { toggleColorMode: toggleMode } = useColorMode();
+  const text = useColorModeValue("dark", "light");
+  const SwitchIcon = useColorModeValue(FaMoon, FaSun);
 
   useUpdateEffect(() => {
     mobileNavBtnRef.current?.focus();
   }, [mobileNav.isOpen]);
   return (
-    <header className="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 border-b border-slate-900/10">
-      <div className="w-full bg-primary-500 h-1 absolute top-0 left-0" />
-
-      <nav className="max-w-8xl mx-auto">
-        <div className="py-4 lg:px-8 mx-4 lg:mx-0 flex items-center justify-between px-4">
-          <Logo />
-          <div className="hidden md:w-4/6 md:flex items-center justify-end">
-            <VersionSwitcher />
-            <Link
-              aria-label="Go to Nature UI GitHub page"
-              href={siteConfig.repo.url}
-              target="_blank" // TODO: fix this
-            >
-              <IconButton
-                className="mr-5 text-gray-500 hover:text-gray-75 transition-colors duration-150"
-                size="xs"
-                icon={<GithubIcon />}
-              />
-            </Link>
-            <Link
-              aria-label="Go to Nature UI Discord page"
-              href={siteConfig.discord.url}
-              target="_blank"
-            >
-              <IconButton
-                className="text-gray-500 hover:text-gray-75 transition-colors duration-150"
-                size="xs"
-                icon={<DiscordIcon />}
-              />
-            </Link>
+    <nature.header
+      css={{
+        backdropFilter: "blur(10px)",
+      }}
+      className="sticky top-0 left-0 w-full z-50 bg-glass"
+    >
+      <nav className="w-full max-w-screen-lg px-4 md:px-0 md:mx-auto py-3">
+        <div className="flex items-center justify-between xl:px-0">
+          <Stack row spacing="6px" className="items-center">
+            <Logo />
+            <NavLink href="/blog">Blog</NavLink>
+            <NavLink href="/about">About</NavLink>
+            <NavLink href="/works">Works</NavLink>
+            <NavLink href="/contact">Contact</NavLink>
+          </Stack>
+          <div className="md:w-2/5 flex items-center justify-end">
+            <Search />
+            <IconButton
+              size="md"
+              className="text-lg sm:ml-3"
+              text="current"
+              aria-label={`Switch to ${text} mode`}
+              variant="ghost"
+              onClick={toggleMode}
+              icon={<SwitchIcon />}
+            />
+            <MobileNavButton
+              ref={mobileNavBtnRef}
+              aria-label="Open Menu"
+              onClick={mobileNav.onOpen}
+            />
           </div>
-          <MobileNavButton
-            ref={mobileNavBtnRef}
-            aria-label="Open Menu"
-            onClick={mobileNav.onOpen}
-          />
         </div>
       </nav>
 
@@ -60,12 +85,8 @@ const HeaderContent = () => {
         isOpen={mobileNav.isOpen}
         onClose={mobileNav.onClose}
       />
-    </header>
+    </nature.header>
   );
-};
-
-const Header = () => {
-  return <HeaderContent />;
 };
 
 export default Header;

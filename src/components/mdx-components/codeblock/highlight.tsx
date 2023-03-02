@@ -51,9 +51,9 @@ export const Highlight: FC<HighlightProps> = ({
       theme={nightOwlTheme}
       {...props}
     >
-      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+      {({ className, tokens, getLineProps, getTokenProps }) => (
         <div style={liveEditorStyle} data-language={language}>
-          <pre className={className} style={style}>
+          <pre className={className}>
             {tokens.map((line, i) => {
               const lineProps = getLineProps({ line, key: i });
               return (

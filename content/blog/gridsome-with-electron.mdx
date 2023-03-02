@@ -1,14 +1,12 @@
 ---
-title: 'Build a Desktop app with Gridsome and Electron.'
+title: "Build a Desktop app with Gridsome and Electron."
 description:
-  'Learn how to combine your knowledge of Gridsome for SPA and Electron for
-  desktop apps to build a desktop App.'
+  "Learn how to combine your knowledge of Gridsome for SPA and Electron for
+  desktop apps to build a desktop App."
 imageUrl: https://res.cloudinary.com/dnature/image/upload/c_scale,w_0.8/v1614292632/blog/electron-gridsome/thumbnail_lu2uwq.png
-tags: ['gridsome', 'electron', 'desktop']
+tags: ["gridsome", "electron", "desktop"]
 author: DNature
 ---
-
-## Learn how to combine your knowledge of Gridsome for SPA and Electron for desktop apps to build a desktop app.
 
 Electron and Gridsome was the basic requirement for an application i and my team
 were working on so i started to make some research on how to use gridsome in
@@ -125,7 +123,7 @@ Now we need to load gridsome contents in our electron app. Add the following
 lines of code to load gridsome url in your electron app:
 
 ```js
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow } = require("electron");
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
@@ -133,19 +131,19 @@ function createWindow() {
     height: 600,
   });
 
-  mainWindow.loadURL('http://localhost:8080');
+  mainWindow.loadURL("http://localhost:8080");
 }
 
 app.whenReady().then(() => {
   createWindow();
 
-  app.on('activate', function () {
+  app.on("activate", function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
 });
 
-app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') app.quit();
+app.on("window-all-closed", function () {
+  if (process.platform !== "darwin") app.quit();
 });
 ```
 
@@ -180,20 +178,20 @@ Basically, what we're going to do is to conditionally load the
 `build index.html` file from gridsome or load gridsome development server url.
 
 ```js
-const { app, BrowserWindow } = require('electron');
-const path = require('path');
-const liveServer = require('live-server');
+const { app, BrowserWindow } = require("electron");
+const path = require("path");
+const liveServer = require("live-server");
 
-const distDir = path.join(__dirname, '..', 'dist'); // require build directory
-const host = 'localhost'; // host: localhost or 0.0.0.0
+const distDir = path.join(__dirname, "..", "dist"); // require build directory
+const host = "localhost"; // host: localhost or 0.0.0.0
 const port = 4000;
-const url = 'http://' + host + ':' + port; // => http://localhost:8081
+const url = "http://" + host + ":" + port; // => http://localhost:8081
 const params = {
   port: port,
   host: host,
   root: distDir,
   open: false, // prevents auto-open in browser
-  file: 'index.html',
+  file: "index.html",
 };
 
 function createWindow() {
@@ -202,27 +200,27 @@ function createWindow() {
     height: 600,
   });
   if (
-    process.env.NODE_ENV === 'prod' ||
-    process.env.NODE_ENV === 'production'
+    process.env.NODE_ENV === "prod" ||
+    process.env.NODE_ENV === "production"
   ) {
     // Here we check if we're in production env
     liveServer.start(params); // startup live-server
     mainWindow.loadURL(url); // load the url in gridsome
   } else {
-    mainWindow.loadURL('http://localhost:8000');
+    mainWindow.loadURL("http://localhost:8000");
   }
 }
 
 app.whenReady().then(() => {
   createWindow();
 
-  app.on('activate', function () {
+  app.on("activate", function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
 });
 
-app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') app.quit();
+app.on("window-all-closed", function () {
+  if (process.platform !== "darwin") app.quit();
 });
 ```
 

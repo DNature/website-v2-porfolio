@@ -1,14 +1,12 @@
 ---
-title: 'File uploads with React and apollo (Part 2).'
+title: "File uploads with React and apollo (Part 2)."
 description:
-  'A complete guide on how to upload files to graphql server with react and
-  apollo-upload-client'
-imageUrl: 'https://res.cloudinary.com/dnature/image/upload/c_scale,w_0.8/v1614284212/blog/file-upload-react/thumbnail_lnmg7o.png'
-tags: ['react', 'apollo', 'upload', 'file']
+  "A complete guide on how to upload files to graphql server with react and
+  apollo-upload-client"
+imageUrl: "https://res.cloudinary.com/dnature/image/upload/c_scale,w_0.8/v1614284212/blog/file-upload-react/thumbnail_lnmg7o.png"
+tags: ["react", "apollo", "upload", "file"]
 author: DNature
 ---
-
-## A complete guide on how to upload files to graphql server with react and apollo-upload-client.
 
 **_Bonus: _ You will also learn how to serve files from your apollo server with
 express.**
@@ -51,18 +49,18 @@ Next thing is to setup our react application to be able use apollo-upload-client
 so we are going to make few changes to our `src/index.js` to look like:
 
 ```js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
 
-import App from './App.jsx';
-import ApolloClient from 'apollo-client';
-import { createUploadLink } from 'apollo-upload-client';
-import { ApolloProvider } from '@apollo/react-hooks';
-import { InMemoryCache } from 'apollo-cache-inmemory';
+import App from "./App.jsx";
+import ApolloClient from "apollo-client";
+import { createUploadLink } from "apollo-upload-client";
+import { ApolloProvider } from "@apollo/react-hooks";
+import { InMemoryCache } from "apollo-cache-inmemory";
 
 const httpLink = createUploadLink({
-  uri: 'http://localhost:4000',
+  uri: "http://localhost:4000",
 });
 
 const client = new ApolloClient({
@@ -74,7 +72,7 @@ ReactDOM.render(
   <ApolloProvider client={client}>
     <App />
   </ApolloProvider>,
-  document.getElementById('root'),
+  document.getElementById("root")
 );
 ```
 
@@ -103,8 +101,8 @@ Create an _upload.jsx_ file in your _src/components_ and add the following code
 which i will explain to you in a sec.
 
 ```js
-import React, { useCallback } from 'react';
-import { useDropzone } from 'react-dropzone';
+import React, { useCallback } from "react";
+import { useDropzone } from "react-dropzone";
 
 const FileUpload = () => {
   const onDrop = useCallback((acceptedFiles) => {
@@ -119,7 +117,7 @@ const FileUpload = () => {
     <>
       <div
         {...getRootProps()}
-        className={`dropzone ${isDragActive && 'isActive'}`}
+        className={`dropzone ${isDragActive && "isActive"}`}
       >
         <input {...getInputProps()} />
         {isDragActive ? (
@@ -154,19 +152,19 @@ To test this out we need to import our component into the App.js component so
 your **src/App.js** should look like
 
 ```js
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import FileUpload from './components/upload';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import FileUpload from "./components/upload";
 
 function App() {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
         <h1>Upload files effortlessly</h1>
       </header>
-      <div className='container'>
+      <div className="container">
         <FileUpload />
       </div>
     </div>
@@ -241,10 +239,10 @@ const [uploadFile] = useMutation(UploadMutation);
 Finally, your **src/components/upload.js** should look like
 
 ```js
-import React, { useCallback } from 'react';
-import { useDropzone } from 'react-dropzone';
-import { useMutation } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
+import React, { useCallback } from "react";
+import { useDropzone } from "react-dropzone";
+import { useMutation } from "@apollo/react-hooks";
+import gql from "graphql-tag";
 
 const UploadMutation = gql`
   mutation uploadFile($file: Upload!) {
@@ -274,7 +272,7 @@ const FileUpload = () => {
       });
     },
     // pass in uploadFile as a dependency
-    [uploadFile],
+    [uploadFile]
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -285,7 +283,7 @@ const FileUpload = () => {
     <>
       <div
         {...getRootProps()}
-        className={`dropzone ${isDragActive && 'isActive'}`}
+        className={`dropzone ${isDragActive && "isActive"}`}
       >
         <input {...getInputProps()} />
         {isDragActive ? (
@@ -346,22 +344,22 @@ I think this funny image explains **cors** better:
 Add the following piece of code to make your server look like this
 
 ```js {1,4,5,6,24,26,28,30}
-import { ApolloServer } from 'apollo-server-express';
-import typeDefs from './typeDefs';
-import resolvers from './resolvers';
-import express from 'express';
-import cors from 'cors'; // import cors
-import path from 'path';
+import { ApolloServer } from "apollo-server-express";
+import typeDefs from "./typeDefs";
+import resolvers from "./resolvers";
+import express from "express";
+import cors from "cors"; // import cors
+import path from "path";
 
 const app = express();
 
 // Import your database configuration
-import connect from './db';
+import connect from "./db";
 
 export default (async function () {
   try {
     await connect.then(() => {
-      console.log('Connected 🚀 To MongoDB Successfully');
+      console.log("Connected 🚀 To MongoDB Successfully");
     });
 
     const server = new ApolloServer({
@@ -369,11 +367,11 @@ export default (async function () {
       resolvers,
     });
 
-    const dir = path.join(process.cwd(), 'images');
+    const dir = path.join(process.cwd(), "images");
 
-    app.use('/images', express.static(dir)); // serve all files in the /images directory
+    app.use("/images", express.static(dir)); // serve all files in the /images directory
 
-    app.use(cors('*')); // All Cross-origin resource sharing from any network
+    app.use(cors("*")); // All Cross-origin resource sharing from any network
 
     server.applyMiddleware({ app }); // apply express as a graphql middleware
     // server.listen(4000, () => {
@@ -412,18 +410,18 @@ to add that to our **createUploadLink** uri.
 Now your `src/index.js` should look like this
 
 ```js {12}
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
 
-import App from './App.jsx';
-import ApolloClient from 'apollo-client';
-import { createUploadLink } from 'apollo-upload-client';
-import { ApolloProvider } from '@apollo/react-hooks';
-import { InMemoryCache } from 'apollo-cache-inmemory';
+import App from "./App.jsx";
+import ApolloClient from "apollo-client";
+import { createUploadLink } from "apollo-upload-client";
+import { ApolloProvider } from "@apollo/react-hooks";
+import { InMemoryCache } from "apollo-cache-inmemory";
 
 const httpLink = createUploadLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: "http://localhost:4000/graphql",
 });
 
 const client = new ApolloClient({
@@ -435,7 +433,7 @@ ReactDOM.render(
   <ApolloProvider client={client}>
     <App />
   </ApolloProvider>,
-  document.getElementById('root'),
+  document.getElementById("root")
 );
 ```
 
@@ -443,9 +441,9 @@ Crate a file and name it `Uploads.js` in your **src/components** directory then
 add the following code:
 
 ```js
-import React from 'react';
-import { useQuery } from '@apollo/react-hooks'; // import useQuery hook
-import gql from 'graphql-tag';
+import React from "react";
+import { useQuery } from "@apollo/react-hooks"; // import useQuery hook
+import gql from "graphql-tag";
 
 // FilesQuery
 export const FileQuery = gql`
@@ -460,9 +458,8 @@ export const FileQuery = gql`
 `;
 
 export default function Uploads() {
-  const { loading, data } = useQuery(
-    FileQuery,
-  ); /* useQuery returns and object with **loading, 
+  const { loading, data } =
+    useQuery(FileQuery); /* useQuery returns and object with **loading, 
    data, and error** but we only care about the loading state and the data object.
    */
 
@@ -474,26 +471,26 @@ export default function Uploads() {
   } else {
     return (
       <>
-        <h1 className='text-center'>Recent uploads</h1>
+        <h1 className="text-center">Recent uploads</h1>
         {data.files.map((file) => {
           console.log(file);
           return (
-            file.mimetype.split('/')[0].includes('image') && (
+            file.mimetype.split("/")[0].includes("image") && (
               <div
                 style={{
                   padding: 16,
-                  border: '1px solid gray',
+                  border: "1px solid gray",
                   borderRadius: 5,
-                  margin: '16px 0',
+                  margin: "16px 0",
                 }}
                 key={file.filename}
               >
                 <img
-                  src={'/' + file.path}
+                  src={"/" + file.path}
                   /* Note the '/'. we added a slash prefix because our file path 
                   comes in this format: images/<filename>.jpg.
                   */ alt={file.filename}
-                  style={{ width: '100%' }}
+                  style={{ width: "100%" }}
                 />
                 <p>{file.filename}</p>
               </div>
@@ -513,11 +510,11 @@ Create a file and name it `uploadWithPreview.js` in your **src/components**
 directory then add the following piece of code
 
 ```js
-import React, { useEffect, useState } from 'react';
-import { useDropzone } from 'react-dropzone';
-import { useMutation } from '@apollo/react-hooks';
-import { UploadMutation } from './upload';
-import { FileQuery } from './Uploads'; // import FileQuery we created in the Uploads.js file
+import React, { useEffect, useState } from "react";
+import { useDropzone } from "react-dropzone";
+import { useMutation } from "@apollo/react-hooks";
+import { UploadMutation } from "./upload";
+import { FileQuery } from "./Uploads"; // import FileQuery we created in the Uploads.js file
 
 export default function WithPreviews(props) {
   const [file, setFile] = useState({}); // empty state that will be populated with a file object
@@ -531,28 +528,28 @@ export default function WithPreviews(props) {
         refetchQueries: [{ query: FileQuery, variables: file }], // update the store after a successful upload.
       });
       setFile({}); // reset state after a successful upload
-      console.log('Uploaded successfully: ', file);
+      console.log("Uploaded successfully: ", file);
     } else {
-      console.log('No files to upload');
+      console.log("No files to upload");
     }
   };
 
   const { getRootProps, getInputProps } = useDropzone({
-    accept: 'image/*',
+    accept: "image/*",
     onDrop: (acceptedFile) => {
       setFile(
         // convert preview string into a URL
         Object.assign(acceptedFile[0], {
           preview: URL.createObjectURL(acceptedFile[0]),
-        }),
+        })
       );
     },
   });
 
   const thumbs = (
-    <div className='thumb' key={file.name}>
-      <div className='thumb-inner'>
-        <img src={file.preview} className='img' alt={file.length && 'img'} />
+    <div className="thumb" key={file.name}>
+      <div className="thumb-inner">
+        <img src={file.preview} className="img" alt={file.length && "img"} />
       </div>
     </div>
   );
@@ -561,21 +558,21 @@ export default function WithPreviews(props) {
     () => () => {
       URL.revokeObjectURL(file.preview);
     },
-    [file],
+    [file]
   );
 
   return (
-    <section className='container'>
-      <div {...getRootProps({ className: 'dropzone' })}>
+    <section className="container">
+      <div {...getRootProps({ className: "dropzone" })}>
         <input {...getInputProps()} />
         <p>Drag 'n' drop some file here, or click to select file</p>
       </div>
-      <aside className='thumb-container'>
+      <aside className="thumb-container">
         {thumbs}
         <button
-          type='submit'
+          type="submit"
           className={`button`}
-          style={{ display: file && !Object.keys(file).length && 'none' }}
+          style={{ display: file && !Object.keys(file).length && "none" }}
           onClick={handleUpload}
         >
           Upload

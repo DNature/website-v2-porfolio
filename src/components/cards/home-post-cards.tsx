@@ -13,17 +13,17 @@ const BottomVariants = {
   hidden: { opacity: 0, y: 100 },
 };
 
-export const HomePostCards = ({ post, ...rest }) => {
+export const HomePostCards = (props) => {
   const {
     slug,
     tags,
     title,
     description,
     imageUrl,
-    date,
-    readTimeMinutes: readTime,
-    author: { githubUrl, websiteUrl, avatarUrl, name },
-  } = post;
+    auth: { githubUrl, websiteUrl, avatarUrl, name },
+    lastEdited,
+    readTime,
+  } = props.frontmatter;
 
   let fallbackSrc: any = imageUrl.split(".");
 
@@ -53,7 +53,6 @@ export const HomePostCards = ({ post, ...rest }) => {
       animate={controls}
       initial="hidden"
       variants={BottomVariants}
-      {...rest}
     >
       <Link href={slug}>
         <div className="grid relative">
@@ -63,28 +62,30 @@ export const HomePostCards = ({ post, ...rest }) => {
             alt={title}
             className="rounded-2xl cursor-pointer w-full h-full object-cover"
           />
-          <Badge className="absolute top-3 right-3 lowercase">
+          <Badge className="absolute top-3 right-3 lowercase bg-slate-100">
             {readTime} min read
           </Badge>
         </div>
         {tags && (
-          <Stack row spacing="2" className="mt-4">
+          <Stack row spacing="8px" className="mt-4">
             {tags.map((tag, i) => (
-              <Badge key={tag + i}>{tag}</Badge>
+              <Badge key={tag + i} className="bg-slate-200">
+                {tag}
+              </Badge>
             ))}
           </Stack>
         )}
         <h3 className="hover:underline font-semibold cursor-pointer mt-3">
           {title}
         </h3>
-        <p className="my-4">{getNChars(description)}</p>
+        <p className="my-4 text-md">{getNChars(description)}</p>
       </Link>
       <Link href={authorProfile}>
         <Stack as="a" row spacing="2" className="items-center">
           <Avatar src={avatarUrl} alt={name} />
-          <Box>
+          <Box className="pl-2">
             <p className="font-medium">{name}</p>
-            {/* <p className="opacity-60 text-sm">{readableDate(date)}</p> */}
+            <p className="opacity-60 text-sm">{lastEdited?.date}</p>
           </Box>
         </Stack>
       </Link>

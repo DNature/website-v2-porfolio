@@ -1,17 +1,11 @@
 ---
-title: 'Build a Progressive Web App with React.js'
-description:
-  "A reference guide on how to remove unused CSS selectors, Minify CSS files to
-  reduce your website's loading time."
+title: "Build a Progressive Web App with React.js"
+description: "A reference guide on how to build a progressive app with React.js."
 imageUrl: https://res.cloudinary.com/dnature/image/upload/c_scale,w_0.8/v1614288205/blog/react-pwa/thumbnail_qthh3f.png
-tags: ['pwa', 'react', 'javascript']
+tags: ["pwa", "react", "javascript"]
 author: DNature
+datePublished: March 06, 2021
 ---
-
-A guide on creating or converting your react application into a progressive web
-app.
-
-<br />
 
 ## What is a Progressive Web Application (PWA)
 
@@ -123,20 +117,20 @@ Lets play around with this app by adding some piece of code in our _src/App.js_
 file.
 
 ```js
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
   const [value, setValue] = React.useState(0);
 
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
         <h1>{value}</h1>
         <button
-          style={{ padding: 12, backgroundColor: '#61dafb', border: 'none' }}
+          style={{ padding: 12, backgroundColor: "#61dafb", border: "none" }}
           onClick={() => setValue(value + 1)}
         >
           Add 1
@@ -218,13 +212,13 @@ that is because we didn't register it in our application before build
 To register it we just need to make one little change in our _src/index.js_.
 
 ```jsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

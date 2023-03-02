@@ -1,6 +1,8 @@
+import { nature } from "@nature-ui/core";
+
 export const BlurEffect = ({ css, ...rest }) => {
   return (
-    <div
+    <nature.div
       css={{
         ...css,
         width: "349px",

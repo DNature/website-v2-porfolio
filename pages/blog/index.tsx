@@ -23,9 +23,11 @@ const Blog = () => {
       </Container>
 
       <Container as="section" size="sm" className="my-28 mx-auto p-6 md:p-0">
-        <Stack col spacing="12">
+        <Stack col spacing="1rem">
           {allBlogs &&
-            allBlogs.map((post) => <BlogCard key={post.title} post={post} />)}
+            allBlogs.map((post) => (
+              <BlogCard key={post.title} frontmatter={post.frontmatter} />
+            ))}
         </Stack>
       </Container>
     </MainLayout>

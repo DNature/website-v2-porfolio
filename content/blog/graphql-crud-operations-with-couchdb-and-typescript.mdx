@@ -1,14 +1,12 @@
 ---
-title: 'Graphql CRUD operations on a CouchDB database with nodejs.'
+title: "Graphql CRUD operations on a CouchDB database with nodejs."
 description:
-  'Learn how to perform basic CRUD (Create, Read, Update, and Delete) operations
-  on a Couchdb database through a Graphql API.'
-imageUrl: 'https://res.cloudinary.com/dnature/image/upload/c_scale,w_0.8/v1614605080/blog/graphql-crud/thumbnail_d498kw.png'
-tags: ['grapphql', 'nodejs', 'couchdb']
+  "Learn how to perform basic CRUD (Create, Read, Update, and Delete) operations
+  on a Couchdb database through a Graphql API."
+imageUrl: "https://res.cloudinary.com/dnature/image/upload/c_scale,w_0.8/v1614605080/blog/graphql-crud/thumbnail_d498kw.png"
+tags: ["grapphql", "nodejs", "couchdb"]
 author: DNature
 ---
-
-## Learn how to perform basic CRUD (Create, Read, Update, and Delete) operations on a Couchdb database through a Graphql API.
 
 ### Prerequisites
 
@@ -104,13 +102,13 @@ This section describes the application code in a bottom-up fashion.
 Your `src/index.ts` should look like:
 
 ```ts
-require('dotenv').config(); // For environment variables
-import { GraphQLServer } from 'graphql-yoga';
-import { Server } from 'http';
-import { Server as HTTPSServer } from 'https';
+require("dotenv").config(); // For environment variables
+import { GraphQLServer } from "graphql-yoga";
+import { Server } from "http";
+import { Server as HTTPSServer } from "https";
 
-import typeDefs from './typeDefs'; // we are going to create this in a minute
-import resolvers from './resolvers'; // we are going to create this in a minute
+import typeDefs from "./typeDefs"; // we are going to create this in a minute
+import resolvers from "./resolvers"; // we are going to create this in a minute
 
 export default (async (): Promise<Server | HTTPSServer> => {
   const server = new GraphQLServer({
@@ -123,7 +121,7 @@ export default (async (): Promise<Server | HTTPSServer> => {
     {
       port,
     },
-    () => console.log(`server is running on http://localhost:${port}`),
+    () => console.log(`server is running on http://localhost:${port}`)
   );
 })();
 ```
@@ -133,10 +131,10 @@ export default (async (): Promise<Server | HTTPSServer> => {
 Add the following snippet to your `./dbConnection/couch.ts` file:
 
 ```ts
-import * as Nano from 'nano';
+import * as Nano from "nano";
 
 export default (async () => {
-  const dbName = 'hello';
+  const dbName = "hello";
   const nano = Nano(process.env.DB_HOST_AUTH); // I'll be storing the database connection uri
   // in an environment variable since it contains vital credentials.
 
@@ -147,11 +145,11 @@ export default (async () => {
       // create a new DB if database doesn't exist.
       await nano.db.create(dbName);
       const db = nano.use(dbName);
-      console.log('database created successfully');
+      console.log("database created successfully");
       return db;
     } else {
       const db = nano.use(dbName);
-      console.log('connected to database successfully');
+      console.log("connected to database successfully");
       return db;
     }
   } catch (err) {
@@ -221,8 +219,8 @@ and update the document. This function takes either an object or a string as an
 argument and inserts/updates the document given.
 
 ```ts
-import { MaybeDocument } from 'nano';
-import couch from './dbConnection/couch';
+import { MaybeDocument } from "nano";
+import couch from "./dbConnection/couch";
 
 // Lets define the interfaces for each resolver.
 interface User extends MaybeDocument {
@@ -388,9 +386,9 @@ export default {
 Your final `resolvers.ts` file should not be different from the below code:
 
 ```ts
-import { MaybeDocument } from 'nano';
+import { MaybeDocument } from "nano";
 
-import couch from './dbConnection/couch';
+import couch from "./dbConnection/couch";
 
 interface User extends MaybeDocument {
   name: string;
@@ -428,7 +426,9 @@ export default {
     update: async (_: any, { id, rev, ...args }: Update) => {
       const findFile = await (await couch).get(id);
       if (findFile) {
-        const file = await (await couch).insert({
+        const file = await (
+          await couch
+        ).insert({
           _id: id,
           _rev: rev,
           ...findFile,
@@ -442,9 +442,11 @@ export default {
   },
   Query: {
     findAll: async () => {
-      const files = await (await couch).find({
+      const files = await (
+        await couch
+      ).find({
         selector: {},
-        fields: ['name', 'email', 'age', 'nice', 'updated'],
+        fields: ["name", "email", "age", "nice", "updated"],
       });
       console.log(files.docs);
       return files.docs;

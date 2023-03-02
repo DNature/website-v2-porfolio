@@ -54,7 +54,10 @@ const Author = defineNestedType(() => ({
 
 const getGithubUserData = async (username: string | undefined) => {
   try {
-    const { data } = await octokit.users.getByUsername({ username });
+    const { data } = await octokit.users.getByUsername({
+      username,
+      headers: {},
+    });
 
     const {
       avatar_url: avatarUrl,
@@ -120,6 +123,14 @@ const getDateCreated = async (filePath) => {
   }
 };
 
+const calcReadTime = (content) => {
+  const wordsPerMinute = 275;
+  const words = content.split(" ");
+  const textLength = words.length || 1;
+
+  return Math.ceil(textLength / wordsPerMinute);
+};
+
 const Blog = defineDocumentType(() => ({
   name: "Blog",
   filePathPattern: "blog/*.mdx",
@@ -135,16 +146,8 @@ const Blog = defineDocumentType(() => ({
     author: {
       type: "string",
     },
-    auth: {
-      type: "nested",
-      of: Author,
-    },
-    lastEdited: {
+    datePublished: {
       type: "string",
-    },
-    dateCreated: {
-      type: "string",
-      default: null,
     },
   },
   computedFields: {
@@ -171,6 +174,8 @@ const Blog = defineDocumentType(() => ({
           auth: await getGithubUserData(doc.author),
           lastEdited,
           dateCreated,
+          readTime: calcReadTime(doc.body.raw),
+          datePublished: doc.datePublished,
         };
       },
     },

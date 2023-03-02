@@ -7,21 +7,19 @@ import { getNChars } from "utils/get-n-chars";
 
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { Frontmatter } from "types/frontmatter";
 
 const BottomVariants = {
   hidden: { opacity: 0, y: 100 },
   visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 1 } },
 };
 
-export const BlogCard = ({ className = "", post, ...rest }) => {
-  const {
-    slug,
-    tags,
-    title,
-    description,
-    imageUrl,
-    readTimeMinutes: readTime,
-  } = post;
+interface IBlogProps {
+  frontmatter: Frontmatter;
+  className?: string;
+}
+export const BlogCard = ({ className = "", frontmatter }: IBlogProps) => {
+  const { slug, tags, title, description, imageUrl, readTime } = frontmatter;
 
   let fallbackSrc: any = imageUrl.split(".");
 
@@ -49,13 +47,11 @@ export const BlogCard = ({ className = "", post, ...rest }) => {
         className,
         "p-6 rounded-2xl bg-glass-card cursor-pointer hover:opacity-80 group"
       )}
-      {...rest}
     >
       <Link href={slug}>
         <Box className="md:grid grid-cols-2 gap-4 items-center">
           <Box className="h-full">
             <LazyImage
-              loading="lazy"
               src={imageUrl}
               fallbackSrc={fallbackSrc}
               alt={title}
@@ -67,9 +63,9 @@ export const BlogCard = ({ className = "", post, ...rest }) => {
               {title}
             </h3>
             {tags && (
-              <Stack row spacing="2" className="mt-4">
+              <Stack row spacing="8px" className="mt-4">
                 {tags.map((tag, i) => (
-                  <Badge color="primary-500" variant="solid" key={tag + i}>
+                  <Badge className="bg-primary-500 text-white" key={tag + i}>
                     {tag}
                   </Badge>
                 ))}

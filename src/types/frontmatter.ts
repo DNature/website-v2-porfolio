@@ -23,8 +23,9 @@ export interface Frontmatter {
     date: string;
     author: string;
   };
-  published?: {
+  dateCreated?: {
     date: string;
     author: string;
   };
+  datePublished?: string;
 }
