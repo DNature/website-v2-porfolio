@@ -1,0 +1,51 @@
+{
+  "routes": [
+    {
+      "routes": [
+        {
+          "title": "Installation",
+          "path": "/getting-started"
+        },
+        {
+          "title": "Upgrade to v2",
+          "path": "/getting-started/migration"
+        },
+        {
+          "title": "Contributing",
+          "path": "/getting-started/contributing"
+        },
+        {
+          "title": "Integrations",
+          "path": "/getting-started/integrations",
+          "open": false,
+          "routes": [
+            {
+              "title": "Capsize",
+              "path": "/getting-started/with-capsize"
+            },
+            {
+              "title": "Formik",
+              "path": "/getting-started/with-formik"
+            },
+            {
+              "title": "Framer Motion",
+              "path": "/getting-started/with-framer"
+            },
+            {
+              "title": "React Hook Form",
+              "path": "/getting-started/with-hook-form"
+            },
+            {
+              "title": "React Table",
+              "path": "/getting-started/with-react-table"
+            },
+            {
+              "title": "Storybook",
+              "path": "/getting-started/with-storybook"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

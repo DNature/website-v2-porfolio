@@ -1,0 +1,49 @@
+{
+  "routes": [
+    {
+      "title": "Hooks",
+      "routes": [
+        {
+          "title": "Utility",
+          "open": true,
+          "routes": [
+            {
+              "title": "useBoolean",
+              "path": "/docs/hooks/use-boolean"
+            },
+            {
+              "title": "useClipboard",
+              "path": "/docs/hooks/use-clipboard"
+            },
+            {
+              "title": "useControllable",
+              "path": "/docs/hooks/use-controllable"
+            },
+            {
+              "title": "useDisclosure",
+              "path": "/docs/hooks/use-disclosure"
+            }
+          ]
+        },
+        {
+          "title": "Component",
+          "open": true,
+          "routes": [
+            {
+              "title": "useCheckbox",
+              "path": "/docs/hooks/use-checkbox"
+            },
+            {
+              "title": "useCheckboxGroup",
+              "path": "/docs/hooks/use-checkbox-group"
+            },
+            {
+              "title": "useRadio",
+              "path": "/docs/hooks/use-radio"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
