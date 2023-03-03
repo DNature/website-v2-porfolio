@@ -21,12 +21,12 @@ const Index = () => {
             Hi 👋, I&apos;m{" "}
             <span className="text-gradient shadow-text">Divine.</span>
           </h1>
-          <h3>I’m a full-stack engineer that wears many hats 🎩🪄</h3>
+          <h3>I&apos;m a full-stack engineer that wears many hats 🎩🪄</h3>
           <p className="mt-2">
             I build blockchain apps (Smart Contracts, Solidity, Dapps, Web3),
             Web apps using React, Typescript, & Nodejs, and I have a great eye
             for designs due to my background in graphic designs. I&apos;ve been
-            working professionally in different company sizes for 5+ years and
+            working professionally in various company sizes for 5+ years and
             I&apos;m currently located in the Netherlands
           </p>
           <Link className="text-primary-500 font-bold" href="/about">

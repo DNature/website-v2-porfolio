@@ -5,6 +5,7 @@ import {
   IoLogoDribbble,
   IoLogoGithub,
   IoLogoLinkedin,
+  IoLogoTwitter,
 } from "react-icons/io5";
 
 import siteConfig from "configs/site-config";
@@ -21,11 +22,11 @@ const ContactLink = ({ href, children, icon }) => (
 );
 
 export const links = [
-  // {
-  //   icon: IoLogoTwitter,
-  //   label: "Twitter",
-  //   href: "https://twitter.com/built_divine",
-  // },
+  {
+    icon: IoLogoTwitter,
+    label: "Twitter",
+    href: "https://twitter.com/built_divine",
+  },
   {
     icon: IoLogoGithub,
     label: "Github",
