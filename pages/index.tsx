@@ -18,16 +18,16 @@ const Index = () => {
         <BlurRight className="absolute bottom-0 -mb-32 right-0 lg:right-64 xl:right-80 2xl:right-96" />
         <Container size="sm" className="z-10 text-center mt-32 md:mt-48 mb-16">
           <h1 className="mb-3">
-            Hi 👋, I’m{" "}
+            Hi 👋, I&apos;m{" "}
             <span className="text-gradient shadow-text">Divine.</span>
           </h1>
           <h3>I’m a full-stack engineer that wears many hats 🎩🪄</h3>
           <p className="mt-2">
             I build blockchain apps (Smart Contracts, Solidity, Dapps, Web3),
             Web apps using React, Typescript, & Nodejs, and I have a great eye
-            for designs due to my background in graphic designs. I've been
+            for designs due to my background in graphic designs. I&apos;ve been
             working professionally in different company sizes for 5+ years and
-            I'm currently located in the Netherlands
+            I&apos;m currently located in the Netherlands
           </p>
           <Link className="text-primary-500 font-bold" href="/about">
             Read more about me -&gt;

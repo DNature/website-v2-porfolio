@@ -30,8 +30,8 @@ const About = ({}) => {
           <h1 className="font-bold">Hello there 👋, I’m Divine Hycenth.</h1>
           <p>
             I’m a Full stack developer with approximately 6 years of
-            professional experience, and I've also jumped into web3/blockchain
-            recently.
+            professional experience, and I&apos;ve also jumped into
+            web3/blockchain recently.
           </p>
           <p>
             Over the course of my career in the computer world, I have worn
