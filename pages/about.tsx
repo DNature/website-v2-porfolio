@@ -29,6 +29,15 @@ const About = ({}) => {
         <Box className="mt-12 md:-mt-40 md:ml-80 xl:ml-92 mx-4 md:mx-0 bg-white p-4 md:p-16 relative z-10">
           <h1 className="font-bold">Hello there 👋, I’m Divine Hycenth.</h1>
           <p>
+            <Link
+              href="/Divine-cv-blockchain.pdf"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              View Resume
+            </Link>
+          </p>
+          <p>
             I’m a Full stack developer with approximately 6 years of
             professional experience, and I&apos;ve also jumped into
             web3/blockchain recently.
@@ -58,19 +67,19 @@ const About = ({}) => {
           <p>
             Occasionally, I write articles related to web development here on my
             blog and also on{" "}
-            <a
+            <Link
               href="https://dev.to/dnature"
               target="_blank"
               rel="noopener noreferrer"
             >
               DEV
-            </a>{" "}
+            </Link>{" "}
             and Hashnode{" "}
-            <a
+            <Link
               href="https://hashnode.com/@DNature"
               target="_blank"
               rel="noopener noreferrer"
-            ></a>
+            ></Link>
             . I enjoy building software solutions for both organizations and
             open-source.
           </p>
