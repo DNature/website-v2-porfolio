@@ -19,37 +19,36 @@ const siteConfig = {
     url: "https://discord.gg/ZA7NgwkeQ4",
   },
   seo: {
-    title: "Nature UI",
-    titleTemplate: "%s - Nature UI",
+    title: "Divine Hycenth - Portfolio",
+    titleTemplate: "%s - Divine",
     description:
-      "Modular React based component library with built in support for tailwindcss",
-    siteUrl: "https://nature-ui.com",
+      "Hi 👋, I’m a full-stack engineer that wears many hats 🎩🪄. I build blockchain apps (Smart Contracts, Solidity, Dapps, Web3), and Web apps using React, Typescript, & Nodejs, and I have a great eye for design due to my background in graphic design. I've been working professionally in various company sizes for 5+ years and I'm currently located in the Netherlands",
+    siteUrl: "https://blog.builtdivine.com",
     twitter: {
-      handle: "@nature-ui",
-      site: "@nature-ui",
+      handle: "@built_divine",
+      site: "@built_divine",
       cardType: "summary_large_image",
     },
     openGraph: {
       type: "website",
       locale: "en_US",
-      url: "https://nature-ui.com",
-      title: "Nature UI",
+      url: "https://blog.builtdivine.com",
+      title: "Divine Hycenth - Portfolio",
       description:
-        "Modular React based component library with built in support for tailwindcss",
-      site_name:
-        "Nature UI: Modular React based component library with built in support for tailwindcss",
+        "Hi 👋, I’m a full-stack engineer that wears many hats 🎩🪄. I build blockchain apps (Smart Contracts, Solidity, Dapps, Web3), and Web apps using React, Typescript, & Nodejs, and I have a great eye for design due to my background in graphic design. I've been working professionally in various company sizes for 5+ years and I'm currently located in the Netherlands",
+      site_name: "Divine Hycenth - Portfolio",
       images: [
         {
           url: "/og-image.png",
           width: 1240,
           height: 480,
-          alt: "Nature UI: Modular React based component library with built in support for tailwindcss",
+          alt: "Divine Hycenth - Portfolio",
         },
         {
           url: "/twitter-og-image.png",
           width: 1012,
           height: 506,
-          alt: "Nature UI: Modular React based component library with built in support for tailwindcss",
+          alt: "Divine Hycenth - Portfolio",
         },
       ],
     },
