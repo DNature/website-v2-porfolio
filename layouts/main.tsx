@@ -8,7 +8,7 @@ import { DefaultSeo } from "next-seo";
 
 const Main = ({
   title = "Full-stack developer - Portfolio",
-  description = `Hi 👋, I’m a full-stack engineer that wears many hats 🎩🪄.I build blockchain apps (Smart Contracts, Solidity, Dapps, Web3), Web apps using React, Typescript, & Nodejs, and I have a great eye for designs due to my background in graphic designs. I've been working professionally in various company sizes for 5+ years and I'm currently located in the Netherlands`,
+  description = `Hi 👋, I’m a full-stack engineer that wears many hats 🎩🪄. I build blockchain apps (Smart Contracts, Solidity, Dapps, Web3), and Web apps using React, Typescript, & Nodejs, and I have a great eye for design due to my background in graphic design. I've been working professionally in various company sizes for 5+ years and I'm currently located in the Netherlands`,
   children,
 }) => {
   return (
