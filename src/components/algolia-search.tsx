@@ -1,25 +1,17 @@
-import { DocSearchModal, useDocSearchKeyboardEvents } from "@docsearch/react";
 import {
+  Badge,
   Box,
   HTMLNatureProps,
-  Portal,
+  Modal,
   Stack,
-  VisuallyHidden,
+  clsx,
 } from "@nature-ui/core";
 import { SearchIcon } from "@nature-ui/icons";
+import data from "configs/search-metadata.json";
+import { matchSorter } from "match-sorter";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import {
-  Ref,
-  forwardRef,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-
-const ACTION_KEY_DEFAULT = ["Ctrl", "Control"];
-const ACTION_KEY_APPLE = ["⌘", "Command"];
+import { Ref, forwardRef, useCallback, useRef, useState } from "react";
+import { getNChars } from "utils/get-n-chars";
 
 function Hit(props) {
   const { hit, children } = props as any;
@@ -28,18 +20,6 @@ function Hit(props) {
 
 export const SearchButton = forwardRef(
   (props: HTMLNatureProps<"button">, ref: Ref<HTMLButtonElement> | null) => {
-    const [actionKey, setActionKey] = useState<string[]>(ACTION_KEY_APPLE);
-
-    useEffect(() => {
-      if (typeof navigator === "undefined") return;
-
-      const isMac = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform);
-
-      if (!isMac) {
-        setActionKey(ACTION_KEY_DEFAULT);
-      }
-    }, []);
-
     return (
       <Box
         as="button"
@@ -50,15 +30,6 @@ export const SearchButton = forwardRef(
       >
         <SearchIcon className="mr-3 ml-1" size="md" />
         <p className="text-gray-500">Quick search...</p>
-
-        <Stack row spacing="4px" className="items-center ml-auto">
-          <VisuallyHidden>Press </VisuallyHidden>
-          <kbd className="no-underline px-2 rounded bg-gray-200">
-            <abbr title={actionKey[1]}>{ACTION_KEY_APPLE[0]}</abbr>
-          </kbd>
-          <VisuallyHidden> and </VisuallyHidden>
-          <kbd className="no-underline px-2 rounded bg-gray-200">K</kbd>
-        </Stack>
       </Box>
     );
   }
@@ -66,11 +37,29 @@ export const SearchButton = forwardRef(
 
 SearchButton.displayName = "SearchButton";
 
+export const SearchInput = ({ className = "", onChange, ...props }) => {
+  return (
+    <Box
+      className={clsx(
+        className,
+        "px-4 py-3 border flex items-center rounded-xl"
+      )}
+      {...props}
+    >
+      <SearchIcon className="text-dark-200" />
+      <input
+        onChange={onChange}
+        className="ml-3 focus:outline-none bg-transparent w-full"
+        placeholder="Search"
+      />
+    </Box>
+  );
+};
+
 export function Search() {
-  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const searchButtonRef = useRef<HTMLButtonElement | null>(null);
-  const [initialQuery, setInitialQuery] = useState<string | undefined>();
+  const [initialQuery, setInitialQuery] = useState<string>("");
 
   const onOpen = useCallback(() => {
     setIsOpen(true);
@@ -80,61 +69,53 @@ export function Search() {
     setIsOpen(false);
   }, [setIsOpen]);
 
-  const onInput = useCallback(
+  const handleChange = useCallback(
     (e) => {
-      setIsOpen(true);
-      setInitialQuery(e.key);
+      setInitialQuery(e.target.value);
     },
-    [setIsOpen, setInitialQuery]
+    [setInitialQuery]
   );
 
-  useDocSearchKeyboardEvents({
-    isOpen,
-    onOpen,
-    onClose,
-    onInput,
-    searchButtonRef,
-  });
+  const result =
+    initialQuery.length && data
+      ? matchSorter(data, initialQuery, {
+          keys: ["title", "description", "tags"],
+        })
+      : [];
 
   return (
     <>
       <SearchButton onClick={onOpen} ref={searchButtonRef} />
       {isOpen && (
-        <Portal>
-          <DocSearchModal
-            placeholder="Search the docs"
-            initialQuery={initialQuery}
-            initialScrollY={window.scrollY}
-            onClose={onClose}
-            indexName="nature-ui"
-            apiKey="0d8256bb9d09856b576409dfb05103af"
-            appId="BH4D9OD16A"
-            navigator={{
-              navigate({ itemUrl }) {
-                setIsOpen(false);
-                router.push(itemUrl);
-              },
-            }}
-            hitComponent={Hit}
-            transformItems={(items) => {
-              return items.map((item) => {
-                /**
-                 *  We transform the absolute URL into a relative URL to
-                 *  leverage Next's preloading.
-                 */
-                const a = document.createElement("a");
-                a.href = item.url;
-                const hash = a.hash === "#content-wrapper" ? "" : a.hash;
-
-                return {
-                  ...item,
-                  url: `${a.pathname}${hash}`,
-                  content: item.content ?? item.hierarchy.lvl0,
-                };
-              });
-            }}
-          />
-        </Portal>
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <>
+            <SearchInput onChange={handleChange} />
+            {result.map((item) => (
+              <Link href={item.url} key={item.title}>
+                <Box className="hover:bg-primary-600 my-2 bg-opacity-20 bg-gray-300 p-4 rounded-xl group group">
+                  <h4 className="group-hover:text-gray-100">
+                    {getNChars(item.title, 55)}
+                  </h4>
+                  {item.tags && (
+                    <Stack row spacing="8px" className="my-2">
+                      {item.tags.map((tag, i) => (
+                        <Badge
+                          className="bg-accent-700 text-dark-800"
+                          key={tag + i}
+                        >
+                          {tag}
+                        </Badge>
+                      ))}
+                    </Stack>
+                  )}
+                  <p className="group-hover:text-gray-200">
+                    {getNChars(item.title, 75)}
+                  </p>
+                </Box>
+              </Link>
+            ))}
+          </>
+        </Modal>
       )}
     </>
   );

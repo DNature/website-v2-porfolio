@@ -5,7 +5,7 @@ const siteConfig = {
   author: {
     name: "Divine Hycenth",
     github: "https://github.com/dnature",
-    twitter: "https://twitter.com/DivineHycenth",
+    twitter: "https://twitter.com/built_divine",
     linkedin: "https://linkedin.com/in/dnature",
     email: "contact@divinehycenth.com",
     website: "https://divinehycenth.com",

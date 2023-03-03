@@ -72,7 +72,7 @@ export const BlogCard = ({ className = "", frontmatter }: IBlogProps) => {
               </Stack>
             )}
             <p className="mt-4">{getNChars(description, 400)}</p>
-            <Badge className="lowercase" variant="outline" color="dark-500">
+            <Badge className="lowercase border border-dark-200">
               {readTime} min read
             </Badge>
           </Box>

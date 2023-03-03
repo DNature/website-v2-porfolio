@@ -18,6 +18,7 @@ import { getNChars } from "utils/get-n-chars";
 
 import Button from "@custom/button";
 import { motion, useAnimation } from "framer-motion";
+import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 
 const RightVariants = {
@@ -93,13 +94,21 @@ export const HomeWorksCard = ({ work, className = "", ...rest }) => {
             )}
             <p className="my-4">{getNChars(description, 300)}</p>
             <Stack row>
-              <Button size="sm" className="bg-gradient" to={websiteUrl}>
+              <Button
+                as={Link}
+                target="_blank"
+                size="sm"
+                className="bg-gradient"
+                href={websiteUrl}
+              >
                 Visit site
               </Button>
               <Button
                 size="sm"
-                className="bg-gray-300 text-dark-700"
-                to={githubUrl}
+                className="bg-gray-300 text-dark-800"
+                as={Link}
+                target="_blank"
+                href={githubUrl}
               >
                 View source
               </Button>
@@ -177,12 +186,19 @@ export const WorksCard = ({
               <Button
                 target="_blank"
                 size="sm"
-                color="gradient"
-                to={websiteUrl}
+                className="bg-gradient"
+                href={websiteUrl}
+                as={Link}
               >
                 Visit site
               </Button>
-              <Button target="_blank" size="sm" color="gray-300" to={githubUrl}>
+              <Button
+                target="_blank"
+                size="sm"
+                className="bg-gray-300 text-dark-800"
+                href={githubUrl}
+                as={Link}
+              >
                 View source
               </Button>
             </Stack>
@@ -281,16 +297,18 @@ export const MobileCard = ({
                 <Button
                   target="_blank"
                   size="sm"
-                  color="gradient"
-                  to={websiteUrl}
+                  className="bg-gradient"
+                  href={websiteUrl}
+                  as={Link}
                 >
                   Visit site
                 </Button>
                 <Button
                   target="_blank"
                   size="sm"
-                  color="gray-300"
-                  to={githubUrl}
+                  className="text-dark-700"
+                  href={githubUrl}
+                  as={Link}
                 >
                   View source
                 </Button>

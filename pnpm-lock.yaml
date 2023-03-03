@@ -10,6 +10,7 @@ specifiers:
   '@octokit/rest': ^19.0.7
   '@types/github-slugger': ^2.0.0
   '@types/node': 18.11.7
+  '@types/nprogress': ^0.2.0
   '@types/prettier': ^2.7.1
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
@@ -23,11 +24,13 @@ specifiers:
   framer-motion: ^7.6.5
   github-slugger: ^2.0.0
   markdown-toc: ^1.2.0
+  match-sorter: ^6.3.1
   mdx-bundler: ^9.0.1
   nanoid: ^4.0.0
   next: ^13.1.1
   next-contentlayer: ^0.2.9
   next-seo: ^5.14.0
+  nprogress: ^0.2.0
   postcss: ^8.4.18
   prettier: ^2.7.1
   prism-react-renderer: ^1.3.5
@@ -35,7 +38,6 @@ specifiers:
   react-dom: 18.2.0
   react-icons: ^4.6.0
   react-intersection-observer: ^9.4.3
-  react-live: ^3.1.1
   react-lorem-component: ^0.13.0
   react-remove-scroll: ^2.5.5
   remark: ^14.0.2
@@ -57,23 +59,25 @@ dependencies:
   '@nature-ui/icons': 2.2.0_react@18.2.0
   '@nature-ui/utils': 2.2.0_react@18.2.0
   '@octokit/rest': 19.0.7
+  '@types/nprogress': 0.2.0
   contentlayer: 0.2.9
   date-fns: 2.29.3
   formik: 2.2.9_react@18.2.0
   framer-motion: 7.6.5_biqbaboplfbrettd7655fr4n2y
   github-slugger: 2.0.0
   markdown-toc: 1.2.0
+  match-sorter: 6.3.1
   mdx-bundler: 9.0.1
   nanoid: 4.0.0
   next: 13.2.3_biqbaboplfbrettd7655fr4n2y
   next-contentlayer: 0.2.9_nvzgbose6yf6w7ijjprgspqefi
   next-seo: 5.14.0_nvzgbose6yf6w7ijjprgspqefi
+  nprogress: 0.2.0
   prism-react-renderer: 1.3.5_react@18.2.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.6.0_react@18.2.0
   react-intersection-observer: 9.4.3_react@18.2.0
-  react-live: 3.1.2_biqbaboplfbrettd7655fr4n2y
   react-lorem-component: 0.13.0_react@18.2.0
   react-remove-scroll: 2.5.5_pmekkgnqduwlme35zpnqhenc34
   remark: 14.0.2
@@ -1450,7 +1454,7 @@ packages:
     dev: true
 
   /@babel/runtime/7.20.1:
-    resolution: {integrity: sha512-mrzLkl6U9YLF8qpqI7TB82PESyEGjm/0Ly91jG575eVxMMlb8fYfOXFZIJ8XfLrJZQbm7dlKry2bJmXBUEkdFg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/@babel/runtime/-/runtime-7.20.1.tgz}
+    resolution: {integrity: sha512-mrzLkl6U9YLF8qpqI7TB82PESyEGjm/0Ly91jG575eVxMMlb8fYfOXFZIJ8XfLrJZQbm7dlKry2bJmXBUEkdFg==}
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.10
@@ -3339,6 +3343,10 @@ packages:
   /@types/node/18.11.7:
     resolution: {integrity: sha512-LhFTglglr63mNXUSRYD8A+ZAIu5sFqNJ4Y2fPuY7UlrySJH87rRRlhtVmMHplmfk5WkoJGmDjE9oiTfyX94CpQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/@types/node/-/node-18.11.7.tgz}
 
+  /@types/nprogress/0.2.0:
+    resolution: {integrity: sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A==}
+    dev: false
+
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/@types/parse-json/-/parse-json-4.0.0.tgz}
     dev: false
@@ -3665,10 +3673,6 @@ packages:
   /ansi-wrap/0.1.0:
     resolution: {integrity: sha512-ZyznvL8k/FZeQHr2T6LzcJ/+vBApDnMNZvfVFy3At0knswWd6rJ3/0Hhmpu8oqa6C92npmozs890sX9Dl6q+Qw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/ansi-wrap/-/ansi-wrap-0.1.0.tgz}
     engines: {node: '>=0.10.0'}
-    dev: false
-
-  /any-promise/1.3.0:
-    resolution: {integrity: sha512-7UvmKalWRt1wgjL1RrGxoSJW/0QZFIegpeGvZG9kjp8vrRu55XTHbwnqq2GpXm9uLbcuhxm3IqX9OB4MZR1b2A==}
     dev: false
 
   /anymatch/3.1.2:
@@ -4027,11 +4031,6 @@ packages:
 
   /commander/2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/commander/-/commander-2.20.3.tgz}
-    dev: false
-
-  /commander/4.1.1:
-    resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
-    engines: {node: '>= 6'}
     dev: false
 
   /commander/7.2.0:
@@ -5282,17 +5281,6 @@ packages:
     resolution: {integrity: sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/glob-to-regexp/-/glob-to-regexp-0.4.1.tgz}
     dev: false
 
-  /glob/7.1.6:
-    resolution: {integrity: sha512-LwaxwyZ72Lk7vZINtNNrywX0ZuLyStrdDtabefZKAY5ZGJhVtgdznluResxNmPitE0SAO+O26sWTHeKSI2wMBA==}
-    dependencies:
-      fs.realpath: 1.0.0
-      inflight: 1.0.6
-      inherits: 2.0.4
-      minimatch: 3.1.2
-      once: 1.4.0
-      path-is-absolute: 1.0.1
-    dev: false
-
   /glob/7.1.7:
     resolution: {integrity: sha512-OvD9ENzPLbegENnYP5UUfJIirTg4+XwMWGaQfQTY0JenxNvvIKP3U3/tAQSPIu/lHxXYSZmpXlUHeqAIdKzBLQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/glob/-/glob-7.1.7.tgz}
     dependencies:
@@ -6028,6 +6016,13 @@ packages:
       strip-color: 0.1.0
     dev: false
 
+  /match-sorter/6.3.1:
+    resolution: {integrity: sha512-mxybbo3pPNuA+ZuCUhm5bwNkXrJTbsk5VWbR5wiwz/GC6LIiegBGn2w3O08UG/jdbYLinw51fSQ5xNU1U3MgBw==}
+    dependencies:
+      '@babel/runtime': 7.20.1
+      remove-accents: 0.4.2
+    dev: false
+
   /math-random/1.0.4:
     resolution: {integrity: sha512-rUxjysqif/BZQH2yhd5Aaq7vXMSx9NdEsQcyA07uEzIvxgI7zIr33gGsh+RU0/XjmQpCW7RsVof1vlkvQVCK5A==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/math-random/-/math-random-1.0.4.tgz}
     dev: false
@@ -6648,14 +6643,6 @@ packages:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/ms/-/ms-2.1.3.tgz}
     dev: true
 
-  /mz/2.7.0:
-    resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}
-    dependencies:
-      any-promise: 1.3.0
-      object-assign: 4.1.1
-      thenify-all: 1.6.0
-    dev: false
-
   /nanoid/3.3.4:
     resolution: {integrity: sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/nanoid/-/nanoid-3.3.4.tgz}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
@@ -6802,6 +6789,10 @@ packages:
     resolution: {integrity: sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/normalize-range/-/normalize-range-0.1.2.tgz}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /nprogress/0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
+    dev: false
 
   /nth-check/2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/nth-check/-/nth-check-2.1.1.tgz}
@@ -6989,11 +6980,6 @@ packages:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/pify/-/pify-2.3.0.tgz}
     engines: {node: '>=0.10.0'}
     dev: true
-
-  /pirates/4.0.5:
-    resolution: {integrity: sha512-8V9+HQPupnaXMA23c5hvl69zXvTwTzyAYasnkb0Tts4XvO4CliqONMOnvlq26rkhLC3nWDFBJf73LU1e1VZLaQ==}
-    engines: {node: '>= 6'}
-    dev: false
 
   /popmotion/11.0.5:
     resolution: {integrity: sha512-la8gPM1WYeFznb/JqF4GiTkRRPZsfaj2+kCxqQgr2MJylMmIKUwBfWW8Wa5fml/8gmtlD5yI01MP1QCZPWmppA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/popmotion/-/popmotion-11.0.5.tgz}
@@ -7251,20 +7237,6 @@ packages:
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/react-is/-/react-is-16.13.1.tgz}
 
-  /react-live/3.1.2_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-U9LhpvOBd1o9ajylgk6yyM7sfkMv0CM6Ya40DBlp4QcPlvwKH6tbDnGXyA5qv/wx1dwIj+cYhAzn3YoxPeMaAw==}
-    engines: {node: '>= 0.12.0', npm: '>= 2.0.0'}
-    peerDependencies:
-      react: '*'
-      react-dom: '*'
-    dependencies:
-      prism-react-renderer: 1.3.5_react@18.2.0
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      sucrase: 3.29.0
-      use-editable: 2.3.3_react@18.2.0
-    dev: false
-
   /react-lorem-component/0.13.0_react@18.2.0:
     resolution: {integrity: sha512-4mWjxmcG/DJJwdxdKwXWyP2N9zohbJg/yYaC+7JffQNrKj3LYDpA/A4u/Dju1v1ZF6Jew2gbFKGb5Z6CL+UNTw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/react-lorem-component/-/react-lorem-component-0.13.0.tgz}
     peerDependencies:
@@ -7379,7 +7351,7 @@ packages:
     dev: false
 
   /regenerator-runtime/0.13.10:
-    resolution: {integrity: sha512-KepLsg4dU12hryUO7bp/axHAKvwGOCV0sGloQtpagJ12ai+ojVDqkeGSiRX1zlq+kjIMZ1t7gpze+26QqtdGqw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/regenerator-runtime/-/regenerator-runtime-0.13.10.tgz}
+    resolution: {integrity: sha512-KepLsg4dU12hryUO7bp/axHAKvwGOCV0sGloQtpagJ12ai+ojVDqkeGSiRX1zlq+kjIMZ1t7gpze+26QqtdGqw==}
 
   /regenerator-transform/0.15.0:
     resolution: {integrity: sha512-LsrGtPmbYg19bcPHwdtmXwbW+TqNvtY4riE3P83foeHRroMbH6/2ddFBfab3t7kbzc7v7p4wbkIecHImqt0QNg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/regenerator-transform/-/regenerator-transform-0.15.0.tgz}
@@ -7536,6 +7508,10 @@ packages:
     dependencies:
       argparse: 1.0.10
       autolinker: 0.28.1
+    dev: false
+
+  /remove-accents/0.4.2:
+    resolution: {integrity: sha512-7pXIJqJOq5tFgG1A2Zxti3Ht8jJF337m4sowbuHsW30ZnkQFnDzy9qBNhgzX8ZLW4+UBcXiiR7SwR6pokHsxiA==}
     dev: false
 
   /repeat-element/1.1.4:
@@ -7852,19 +7828,6 @@ packages:
     resolution: {integrity: sha512-GP6WDNWf+o403jrEp9c5jibKavrtLW+/qYGhFxFrG8maXhwTBI7gLLhiBb0o7uFccWN+EOS9aMO6cGHWAO07OA==}
     dev: false
 
-  /sucrase/3.29.0:
-    resolution: {integrity: sha512-bZPAuGA5SdFHuzqIhTAqt9fvNEo9rESqXIG3oiKdF8K4UmkQxC4KlNL3lVyAErXp+mPvUqZ5l13qx6TrDIGf3A==}
-    engines: {node: '>=8'}
-    hasBin: true
-    dependencies:
-      commander: 4.1.1
-      glob: 7.1.6
-      lines-and-columns: 1.2.4
-      mz: 2.7.0
-      pirates: 4.0.5
-      ts-interface-checker: 0.1.13
-    dev: false
-
   /supports-color/5.5.0:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}
     engines: {node: '>=4'}
@@ -7985,19 +7948,6 @@ packages:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/text-table/-/text-table-0.2.0.tgz}
     dev: true
 
-  /thenify-all/1.6.0:
-    resolution: {integrity: sha512-RNxQH/qI8/t3thXJDwcstUO4zeqo64+Uy/+sNVRBx4Xn2OX+OZ9oP+iJnNFqplFra2ZUVeKCSa2oVWi3T4uVmA==}
-    engines: {node: '>=0.8'}
-    dependencies:
-      thenify: 3.3.1
-    dev: false
-
-  /thenify/3.3.1:
-    resolution: {integrity: sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==}
-    dependencies:
-      any-promise: 1.3.0
-    dev: false
-
   /through2/2.0.5:
     resolution: {integrity: sha512-/mrRod8xqpA+IHSLyGCQ2s8SPHiCDEeQJSep1jqLYeEUClOFG2Qsh+4FU6G9VeqpZnGW/Su8LQGc4YKni5rYSQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/through2/-/through2-2.0.5.tgz}
     dependencies:
@@ -8053,10 +8003,6 @@ packages:
 
   /trough/2.1.0:
     resolution: {integrity: sha512-AqTiAOLcj85xS7vQ8QkAV41hPDIJ71XJB4RCUrzo/1GM2CQwhkJGaf9Hgr7BOugMRpgGUrqRg/DrBDl4H40+8g==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/trough/-/trough-2.1.0.tgz}
-
-  /ts-interface-checker/0.1.13:
-    resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
-    dev: false
 
   /ts-pattern/4.0.5:
     resolution: {integrity: sha512-Bq44KCEt7JVaNLa148mBCJkcQf4l7jtLEBDuDdeuLynWDA+1a60P4D0rMkqSM9mOKLQbIWUddE9h3XKyKwBeqA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.com/ts-pattern/-/ts-pattern-4.0.5.tgz}
@@ -8269,14 +8215,6 @@ packages:
       '@types/react': 18.0.28
       react: 18.2.0
       tslib: 2.4.1
-    dev: false
-
-  /use-editable/2.3.3_react@18.2.0:
-    resolution: {integrity: sha512-7wVD2JbfAFJ3DK0vITvXBdpd9JAz5BcKAAolsnLBuBn6UDDwBGuCIAGvR3yA2BNKm578vAMVHFCWaOcA+BhhiA==}
-    peerDependencies:
-      react: '>= 16.8.0'
-    dependencies:
-      react: 18.2.0
     dev: false
 
   /use-sidecar/1.1.2_pmekkgnqduwlme35zpnqhenc34:

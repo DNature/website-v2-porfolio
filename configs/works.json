@@ -8,6 +8,63 @@
     "tags": ["#open-source", "#react", "#typescript"]
   },
   {
+    "title": "Fitness fiends",
+    "description": "Fitness Fiends is a collection of 6,666 fitness-loving fiends working out on the Ethereum blockchain. Each fiend doubles up as your membership to the Fitness Fiends ecosystem granting a whole array of real-world and digital benefits, from free gym membership to an immersive Metaverse where you can train, game and socialize.",
+    "imageUrl": "https://res.cloudinary.com/digmzlfsa/image/upload/c_scale,w_0.8/v1677775718/Screenshot_2023-02-28_at_19.49.18_ban2nk.png",
+    "githubUrl": "https://github.com/dnature",
+    "websiteUrl": "https://fitnessfiends.com/",
+    "tags": ["#freelance", "#blockchain", "#solidity"]
+  },
+  {
+    "title": "Naeme",
+    "description": "Naeme is an all-in-one solution for managing events. It involves a web and a Mobile app and I am the founder. I've halt the lunch due to some reasons.",
+    "imageUrl": "https://res.cloudinary.com/digmzlfsa/image/upload/c_scale,w_0.8/v1677780920/Screenshot_2023-03-02_at_19.15.02_te8wq8.png",
+    "githubUrl": "https://github.com/dnature",
+    "websiteUrl": "https://naeme.vercel.app",
+    "tags": ["#react", "#react native", "#typescript"]
+  },
+  {
+    "title": "Slotie",
+    "description": "Slotie NFT is an online casino network on the blockchain. Leveraging blockchain technology Slotie aims to provide users with an online casino experience never seen before.",
+    "imageUrl": "https://res.cloudinary.com/digmzlfsa/image/upload/c_scale,w_0.8/v1677775664/Screenshot_2023-02-28_at_19.27.56_yamgpb.png",
+    "githubUrl": "",
+    "websiteUrl": "https://slotie.com/",
+    "tags": ["#freelance", "#blockchain", "#react"]
+  },
+  {
+    "title": "Crypto Bears",
+    "description": "The Crypto Bull Society is a group of like-minded individuals who are bullish on the future of crypto. Crypto Bull Society is characterized by its stunning 3D artworks.",
+    "imageUrl": "https://res.cloudinary.com/digmzlfsa/image/upload/c_scale,w_0.8/v1677778781/Screenshot_2023-03-02_at_18.18.48_eeost8.png",
+    "githubUrl": "https://github.com/dnature",
+    "websiteUrl": "https://cryptobullsociety.com/collection/",
+    "tags": ["#freelance", "#blockchain", "#react"]
+  },
+  {
+    "title": "Plunder the void",
+    "description": "Plunder The Void is a P2P2E game based on the Avalanche network utilizing USDC. It's design is an homage to all of the space faring captains and privateers to ever appear on screen. From Serenity and Star Wars to Star Trek and more, Players travel the Void in search of treasure and riches.",
+    "imageUrl": "https://res.cloudinary.com/digmzlfsa/image/upload/c_scale,w_0.8/v1677778922/Screenshot_2023-02-28_at_19.33.26_hevwpc.jpg",
+    "githubUrl": "https://github.com/dnature",
+    "websiteUrl": "https://plunderthevoid.io/",
+    "tags": ["#freelance", "#blockchain", "#react"]
+  },
+
+  {
+    "title": "MDEFI",
+    "description": "Multidextrous is a decentralized finance platform (DEFI) that focuses on optimizing your trades across hundreds of DEXes on multiple networks.",
+    "imageUrl": "https://res.cloudinary.com/digmzlfsa/image/upload/c_scale,w_0.8/v1677775717/Screenshot_2023-02-28_at_19.34.58_dvoghv.png",
+    "githubUrl": "https://github.com/dnature",
+    "websiteUrl": "https://mdefi.vercel.app/",
+    "tags": ["#freelance", "#blockchain", "#react"]
+  },
+  {
+    "title": "Metatraids",
+    "description": "Metatriads is a Web3 Clothing Brand startup aiming to revolutionize the fashion industry.",
+    "imageUrl": "https://res.cloudinary.com/digmzlfsa/image/upload/c_scale,w_0.8/v1677775720/Screenshot_2023-02-28_at_19.30.09_bconfd.png",
+    "githubUrl": "https://github.com/dnature",
+    "websiteUrl": "https://www.metatriads.com/",
+    "tags": ["#freelance", "#blockchain", "#react"]
+  },
+  {
     "title": "Cryptocompare dashboard",
     "description": "Crypto compare is a real-time crypto dashboard built with React and Typescript.",
     "imageUrl": "https://res.cloudinary.com/dnature/image/upload/c_scale,w_0.8/v1625513934/works/crypto-tracker_dnfvd5.png",

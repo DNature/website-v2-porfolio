@@ -20,7 +20,7 @@ export const links = [
   {
     icon: IoLogoTwitter,
     label: "Twitter",
-    href: "https://twitter.com/DivineHycenth",
+    href: "https://twitter.com/built_divine",
   },
   {
     icon: IoLogoDribbble,
@@ -73,7 +73,7 @@ const Footer = () => {
               <Link
                 target="_blank"
                 className="hover:underline"
-                href={"//twitter.com/DivineHycenth"}
+                href={"https://twitter.com/built_divine"}
               >
                 Divine Hycenth
               </Link>

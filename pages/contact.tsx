@@ -1,41 +1,41 @@
 import { Container, Icon } from "@nature-ui/core";
+import Link from "next/link";
 import {
   IoLogoDiscord,
   IoLogoDribbble,
   IoLogoGithub,
   IoLogoLinkedin,
-  IoLogoTwitter,
 } from "react-icons/io5";
 
 import siteConfig from "configs/site-config";
 
 import MainLayout from "layouts/main";
 
-const Link = ({ href, children, icon }) => (
+const ContactLink = ({ href, children, icon }) => (
   <p className="text-primary-500 hover:underline mb-3">
-    <a href={href} target="_blank">
+    <Link href={href} target="_blank">
       <Icon as={icon} size="lg" className="text-gray-400 mr-3 inline-flex" />
       {children}
-    </a>
+    </Link>
   </p>
 );
 
 export const links = [
-  {
-    icon: IoLogoTwitter,
-    label: "Twitter",
-    href: "//twitter.com/DivineHycenth",
-  },
+  // {
+  //   icon: IoLogoTwitter,
+  //   label: "Twitter",
+  //   href: "https://twitter.com/built_divine",
+  // },
   {
     icon: IoLogoGithub,
     label: "Github",
-    href: "//github.com/dnature",
+    href: "https://github.com/dnature",
   },
 
   {
     icon: IoLogoLinkedin,
     label: "Linkedin",
-    href: "//linkedin.com/in/dnature",
+    href: "https://linkedin.com/in/dnature",
   },
   {
     icon: IoLogoDribbble,
@@ -71,9 +71,9 @@ const Contact = ({}) => {
         <ol>
           {links.map(({ href, label, icon }) => (
             <li key={label}>
-              <Link href={href} icon={icon}>
+              <ContactLink href={href} icon={icon}>
                 {label}
-              </Link>
+              </ContactLink>
             </li>
           ))}
         </ol>

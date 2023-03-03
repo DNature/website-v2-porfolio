@@ -38,6 +38,7 @@ module.exports = {
           600: "var(--accent-600)",
           700: "var(--accent-700)",
         },
+        white: "var(--white)",
       },
       maxWidth: {
         "8xl": "90rem",

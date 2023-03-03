@@ -4,9 +4,29 @@ import siteConfig from "configs/site-config";
 import { DefaultSeo } from "next-seo";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import Router from "next/router";
+import NProgress from "nprogress";
+
+import { useEffect } from "react";
 import "../styles/globals.css";
 
 export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    Router.events.on("routeChangeStart", () => {
+      NProgress.start();
+      NProgress.set(0.1);
+      NProgress.inc(0.3);
+    });
+
+    Router.events.on("routeChangeComplete", () => {
+      NProgress.done();
+    });
+
+    Router.events.on("routeChangeError", () => {
+      NProgress.done();
+    });
+  }, []);
+
   return (
     <>
       <Head>

@@ -57,6 +57,10 @@ h3 {
 a {
   @apply hover:opacity-70;
 }
+#about > p,
+#about > * p {
+  @apply text-xl mt-5;
+}
 
 .mdx-content > p,
 .mdx-content > * p {

@@ -21,6 +21,7 @@ export const HomePostCards = (props) => {
     description,
     imageUrl,
     auth: { githubUrl, websiteUrl, avatarUrl, name },
+    datePublished,
     lastEdited,
     readTime,
   } = props.frontmatter;
@@ -69,7 +70,7 @@ export const HomePostCards = (props) => {
         {tags && (
           <Stack row spacing="8px" className="mt-4">
             {tags.map((tag, i) => (
-              <Badge key={tag + i} className="bg-slate-200">
+              <Badge key={tag + i} className="bg-dark-100 text-dark-800">
                 {tag}
               </Badge>
             ))}
@@ -85,7 +86,9 @@ export const HomePostCards = (props) => {
           <Avatar src={avatarUrl} alt={name} />
           <Box className="pl-2">
             <p className="font-medium">{name}</p>
-            <p className="opacity-60 text-sm">{lastEdited?.date}</p>
+            <p className="opacity-60 text-sm">
+              {datePublished ?? lastEdited?.date}
+            </p>
           </Box>
         </Stack>
       </Link>
