@@ -24,6 +24,30 @@
     "tags": ["#react", "#react native", "#typescript"]
   },
   {
+    "title": "CombatCovid",
+    "description": "Combat covid with hardware Search for well documented designs 🔍 and document new solutions.",
+    "imageUrl": "https://res.cloudinary.com/dnature/image/upload/c_scale,w_0.8/v1614461947/works/combat-covid_qxwl74.png",
+    "githubUrl": "http://github.com/CombatCovid",
+    "websiteUrl": "http://combatcovid.equipment/",
+    "tags": ["#open-source", "#vue"]
+  },
+  {
+    "title": "Transferwise Clone",
+    "description": "I cloned the homepage of transferwise.com just for fun. I attempted the design and most functionalities present on the website.",
+    "imageUrl": "https://res.cloudinary.com/dnature/image/upload/c_scale,w_0.8/v1614461944/works/transferwise_ggpif9.png",
+    "githubUrl": "http://github.com/DNature/transferwise",
+    "websiteUrl": "https://transferwise.netlify.app/",
+    "tags": ["#react", "#ui"]
+  },
+  {
+    "title": "Cleanfits",
+    "description": "Cleanfits is an imaginary laundry and dry cleaning agency. It lets users book cleaning appointments, track delivery and pay online.!",
+    "imageUrl": "https://res.cloudinary.com/dnature/image/upload/c_scale,w_0.8/v1614509870/works/clean-fits_x1m6uf.png",
+    "githubUrl": "http://github.com/DNature/cleanfits_original",
+    "websiteUrl": "http://cleanfits.herokuapp.com/",
+    "tags": ["#react", "#ui"]
+  },
+  {
     "title": "Slotie",
     "description": "Slotie NFT is an online casino network on the blockchain. Leveraging blockchain technology Slotie aims to provide users with an online casino experience never seen before.",
     "imageUrl": "https://res.cloudinary.com/digmzlfsa/image/upload/c_scale,w_0.8/v1677775664/Screenshot_2023-02-28_at_19.27.56_yamgpb.png",

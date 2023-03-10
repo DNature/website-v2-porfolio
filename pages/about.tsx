@@ -38,9 +38,14 @@ const About = ({}) => {
             </Link>
           </p>
           <p>
-            I’m a Full stack developer with approximately 6 years of
-            professional experience, and I&apos;ve also jumped into
-            web3/blockchain recently.
+            I’m a Full stack developer with over 5 years of professional
+            experience. I&apos;ve been building web applications using
+            technologies like React, Next.js, Typescript, Node.js, GraphQL and
+            many more.
+          </p>
+          <p>
+            I&apos;ve been involved in various company/team sizes that uses
+            AGILE/SCRUM methodologies to deliver high quality softwares.
           </p>
           <p>
             Over the course of my career in the computer world, I have worn

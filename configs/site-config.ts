@@ -22,7 +22,7 @@ const siteConfig = {
     title: "Divine Hycenth - Portfolio",
     titleTemplate: "%s - Divine",
     description:
-      "Hi 👋, I’m a full-stack engineer that wears many hats 🎩🪄. I build blockchain apps (Smart Contracts, Solidity, Dapps, Web3), and Web apps using React, Typescript, & Nodejs, and I have a great eye for design due to my background in graphic design. I've been working professionally in various company sizes for 5+ years and I'm currently located in the Netherlands",
+      "Hi 👋, I’m a full-stack engineer that wears many hats 🎩🪄. I build Web apps using React (Next.js), Typescript, & Nodejs, and I have a great eye for design due to my background in graphic design. I've been working professionally in various company sizes for 5+ years using SCRUM and AGILE methodologies and I'm currently located in the Netherlands",
     siteUrl: "https://blog.builtdivine.com",
     twitter: {
       handle: "@built_divine",
@@ -35,7 +35,7 @@ const siteConfig = {
       url: "https://blog.builtdivine.com",
       title: "Divine Hycenth - Portfolio",
       description:
-        "Hi 👋, I’m a full-stack engineer that wears many hats 🎩🪄. I build blockchain apps (Smart Contracts, Solidity, Dapps, Web3), and Web apps using React, Typescript, & Nodejs, and I have a great eye for design due to my background in graphic design. I've been working professionally in various company sizes for 5+ years and I'm currently located in the Netherlands",
+        "Hi 👋, I’m a full-stack engineer that wears many hats 🎩🪄. I build Web apps using React (Next.js), Typescript, & Nodejs, and I have a great eye for design due to my background in graphic design. I've been working professionally in various company sizes for 5+ years using SCRUM and AGILE methodologies and I'm currently located in the Netherlands",
       site_name: "Divine Hycenth - Portfolio",
       images: [
         {
